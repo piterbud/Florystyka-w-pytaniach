@@ -1,0 +1,19 @@
+<section class="quiz_box_start" [ngClass]="{'quiz_box_end': showQuizBox}" *ngIf="goToFirstQuestions">
+  <div class="quiz_questions">
+    <p>{{ idSentance }}</p>
+    <p>{{ title }}</p>
+    <ul>
+      <li *ngFor="let answer of answers">
+        <label for=""><input type="radio" name="answers"> {{ answer }}</label>
+      </li>
+    </ul>
+  </div>
+  <div class="quiz_images" [ngClass]="{'quiz_images_move_left': moveImageLeft()}">
+    <img [src]="image" alt="quizImage" *ngIf="showImage()">
+  </div>
+  <div class="next_question_button">
+    <button class="next_question_button_start"
+    [ngClass]="{'next_question_button_end': showNextQuestionButton}"
+    type="button" (click)="nextQuestion(this.id)">Dalej</button>
+  </div>
+</section>
