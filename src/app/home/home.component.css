@@ -1,6 +1,6 @@
 .home_page {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   background-color: black;
   background-image: url(../../assets/home_flowers_desktop.jpg);
@@ -52,7 +52,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60%;
+  min-height: 60%;
+  padding: 25px;
   background-color: rgba(20, 20, 20, 0.7);
   border-radius: 6px;
   opacity: .0;
@@ -60,11 +61,17 @@
 
 .home_page_box_end {
   opacity: 1;
-  transition: all 0.4s ease-out;
+  transition: all 0.8s ease-out;
+}
+
+.home_page_box_summary_change {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.8s ease-out;
 }
 
 .home_page_form {
-  width: 70%;
+  width: 80%;
   font-family: "Poetsen One", sans-serif;
 }
 
@@ -89,6 +96,13 @@
   color: rgb(213, 213, 227);
   background-color: transparent;
   border: 2px solid #80932b;
+}
+
+.home_page_form input::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgb(255, 62, 62);
 }
 
 #start_quiz_button_1 {

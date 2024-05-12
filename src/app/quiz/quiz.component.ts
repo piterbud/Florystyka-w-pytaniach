@@ -1,33 +1,43 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { QuestionsService } from './questions.service';
+import { FormsModule } from '@angular/forms';
 
 import { Question } from './question.model';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css'
 })
 export class QuizComponent implements OnInit {
   @Input() goToFirstQuestions: boolean;
   @Input() numberOfQuestions: number;
+  @Input() userName: string;
   @Output() backgroundChangedSecondTime = new EventEmitter<boolean>();
   @Output() backgroundChangedThirdTime = new EventEmitter<boolean>();
+  @Output() quizSummaryStarted = new EventEmitter<boolean>();
 
   allQuestions: Question[];
   showQuizBox: boolean = false;
   showNextQuestionButton: boolean = false;
+  goToQuizSummary: boolean = false;
+  poorQuizScore: boolean = false;
 
   id: number;
   idSentance: string;
   title: string;
   answers: string[];
+  correctAnswer: number;
   image: string = "";
+  answerAlert: string = "";
+
   currentQuestionIndex: number = 0;
   score: number = 0;
+  scoreCalculation: number;
+  chosenQuestionIndex: number;
 
   constructor(public questionsService: QuestionsService) {}
 
@@ -46,7 +56,12 @@ export class QuizComponent implements OnInit {
     this.idSentance = `Pytanie ${questions[this.currentQuestionIndex].id}`;
     this.title = questions[this.currentQuestionIndex].title;
     this.answers = questions[this.currentQuestionIndex].answers;
+    this.correctAnswer = questions[this.currentQuestionIndex].correctAnswer;
     this.image = `../../assets/quiz_images/${questions[this.currentQuestionIndex].image}`;
+  }
+
+  onChange(e: any): void {
+    this.chosenQuestionIndex = parseInt(e.target.value);
   }
 
   showImage(): boolean {
@@ -58,15 +73,39 @@ export class QuizComponent implements OnInit {
   }
 
   nextQuestion(id: number): void {
-    this.currentQuestionIndex++;
-    this.showQuestions(this.allQuestions);
+    if (this.chosenQuestionIndex >= 0) {
 
-    const goToSecondQuestions = true;
-    const goToThirdQuestions = true;
-    if (id === 3) {
-      this.backgroundChangedSecondTime.emit(goToSecondQuestions);
-    } else if (id === 6) {
-      this.backgroundChangedThirdTime.emit(goToThirdQuestions);
+      if (this.chosenQuestionIndex === this.correctAnswer) {
+        this.score++;
+      }
+      this.currentQuestionIndex++;
+
+      if (this.currentQuestionIndex === this.allQuestions.length) {
+        this.scoreCalculation = this.score / this.numberOfQuestions;
+        if (this.scoreCalculation <= 0.5) {
+          this.poorQuizScore = true;
+        }
+        this.goToFirstQuestions = false;
+        this.goToQuizSummary = true;
+        this.quizSummaryStarted.emit(this.goToQuizSummary);
+      } else {
+        this.showQuestions(this.allQuestions);
+        this.chosenQuestionIndex = undefined;
+
+        // background changes
+        const goToSecondQuestions = true;
+        const goToThirdQuestions = true;
+        if (id === 3) {
+          this.backgroundChangedSecondTime.emit(goToSecondQuestions);
+        } else if (id === 6) {
+          this.backgroundChangedThirdTime.emit(goToThirdQuestions);
+        }
+      }
+    } else {
+      this.answerAlert = 'zaznacz jedną z odpowiedzi...';
+      setTimeout(() => {
+        this.answerAlert = '';
+      }, 1400);
     }
   }
 }

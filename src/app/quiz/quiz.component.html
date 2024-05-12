@@ -3,9 +3,10 @@
     <p>{{ idSentance }}</p>
     <p>{{ title }}</p>
     <ul>
-      <li *ngFor="let answer of answers">
-        <label for=""><input type="radio" name="answers"> {{ answer }}</label>
+      <li *ngFor="let answer of answers; let i = index">
+        <label for=""><input type="radio" name="answers" [value]="i" (change)="onChange($event)"> {{ answer }}</label>
       </li>
+      <li>{{ answerAlert }}</li>
     </ul>
   </div>
   <div class="quiz_images" [ngClass]="{'quiz_images_move_left': moveImageLeft()}">
@@ -16,4 +17,11 @@
     [ngClass]="{'next_question_button_end': showNextQuestionButton}"
     type="button" (click)="nextQuestion(this.id)">Dalej</button>
   </div>
+</section>
+
+<section class="quiz_summary" *ngIf="goToQuizSummary">
+  <p>{{ userName }},</p>
+  <p>Quiz florystyczny został ukończony przez Ciebie z wynikiem:</p>
+  <p [ngClass]="{'poor_quiz_score': poorQuizScore}">{{ score }}/{{ numberOfQuestions }}</p>
+  <button class="summary_report_button">Zobacz odpowiedzi</button>
 </section>

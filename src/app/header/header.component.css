@@ -33,6 +33,7 @@ header {
   position: relative;
   left: 20px;
   top: 6px;
+  margin-bottom: 0px;
   font-family: "Poetsen One", sans-serif;
   font-size: 35px;
   color: #ff66a3;

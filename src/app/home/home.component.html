@@ -2,10 +2,12 @@
 [ngClass]="{'background_for_first_questions': goToFirstQuestions}"
 [ngClass]="{'background_for_second_questions': goToSecondQuestions}"
 [ngClass]="{'background_for_third_questions': goToThirdQuestions}">
-  <div class="home_page_box_start col-md-8" [ngClass]="{'home_page_box_end': showHomePageBox}">
+  <div class="home_page_box_start col-md-8"
+  [ngClass]="{'home_page_box_end': showHomePageBox}"
+  [ngClass]="{'home_page_box_summary_change': goToQuizSummary}">
     <div class="home_page_form" *ngIf="!goToFirstQuestions">
       <p>Wpisz swoje imię / nick:</p>
-      <input class="rounded" type="text" [(ngModel)]="enteredName">
+      <input class="rounded" type="text" [placeholder]="nameAlert" [(ngModel)]="enteredName">
       <p>Wybierz ilość pytań:</p>
       <button class="start_quiz_button rounded" id="start_quiz_button_1" (click)="startQuiz(3)">3</button>
       <button class="start_quiz_button rounded" id="start_quiz_button_2" (click)="startQuiz(6)">6</button>
@@ -13,8 +15,10 @@
     </div>
     <app-quiz [goToFirstQuestions]="goToFirstQuestions"
     [numberOfQuestions]="numberOfQuestions"
+    [userName]="userName"
     *ngIf="goToFirstQuestions"
     (backgroundChangedSecondTime)="secondBackgroundChange($event)"
-    (backgroundChangedThirdTime)="thirdBackgroundChange($event)"></app-quiz>
+    (backgroundChangedThirdTime)="thirdBackgroundChange($event)"
+    (quizSummaryStarted)="homePageBoxSummaryChange($event)"></app-quiz>
   </div>
 </section>

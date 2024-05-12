@@ -16,19 +16,27 @@ export class HomeComponent implements OnInit {
   goToSecondQuestions: boolean = false;
   goToThirdQuestions: boolean = false;
   showHomePageBox: boolean = false;
+  goToQuizSummary: boolean = false;
   numberOfQuestions: number;
   enteredName: string = '';
   userName: string;
+  nameAlert: string = '';
 
   ngOnInit() {
     setTimeout(() => { this.showHomePageBox = true }, 400);
   }
 
   startQuiz(numberOfQuestions: number): void {
-    this.goToFirstQuestions = true;
-    this.numberOfQuestions = numberOfQuestions;
     this.userName = this.enteredName;
-    console.log(this.userName);
+    if (this.userName.length > 0) {
+      this.goToFirstQuestions = true;
+      this.numberOfQuestions = numberOfQuestions;
+    } else {
+      this.nameAlert = 'uzupełnij to pole :)';
+      setTimeout(() => {
+        this.nameAlert = '';
+      }, 1200);
+    }
   }
 
   secondBackgroundChange(goToSecondQuestions: boolean): void {
@@ -37,5 +45,9 @@ export class HomeComponent implements OnInit {
 
   thirdBackgroundChange(goToThirdQuestions: boolean): void {
     this.goToThirdQuestions = goToThirdQuestions;
+  }
+
+  homePageBoxSummaryChange(goToQuizSummary: boolean): void {
+    this.goToQuizSummary = goToQuizSummary;
   }
 }
