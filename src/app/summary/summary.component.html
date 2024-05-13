@@ -1,11 +1,13 @@
 <section class="quiz_summary_report">
+  <!-- <form class="form"> -->
   <div class="quiz_question_list" *ngFor="let question of questionList">
     <p>Pytanie {{ question.id }}</p>
     <p>{{ question.title }}</p>
       <ul>
         <li *ngFor="let answer of question.answers; let i = index">
-          <label [for]="i"><input type="radio" name="answers" [id]="i" [value]="i"> {{ answer }}</label>
+          <label [for]="i" [ngClass]="{'green_text': i === question.correctAnswer, 'red_text': i !== question.correctAnswer && i === question.userAnswer}"><input type="radio" [name]="question.questionName" [id]="i" [value]="i" [checked]="i === question.userAnswer"> {{ answer }}</label>
         </li>
       </ul>
    </div>
+  <!-- </form> -->
 </section>

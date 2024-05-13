@@ -4,4 +4,6 @@ export interface Question {
   correctAnswer: number;
   image: string;
   id: number;
+  questionName: string;
+  userAnswer?: number;
 }

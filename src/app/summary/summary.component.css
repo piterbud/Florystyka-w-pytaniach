@@ -22,3 +22,11 @@
   list-style-type: none;
   padding-bottom: 8px;
 }
+
+.green_text {
+  color: #31724e;
+}
+
+.red_text {
+  color: #B81434;
+}

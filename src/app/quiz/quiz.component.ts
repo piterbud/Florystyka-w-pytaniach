@@ -22,7 +22,7 @@ export class QuizComponent implements OnInit {
   @Output() backgroundChangedThirdTime = new EventEmitter<boolean>();
   @Output() quizSummaryStarted = new EventEmitter<boolean>();
 
-  allQuestions: Question[];
+  allQuestions: Question[] = [];
   showQuizBox: boolean = false;
   showNextQuestionButton: boolean = false;
   goToQuizSummary: boolean = false;
@@ -41,6 +41,7 @@ export class QuizComponent implements OnInit {
   score: number = 0;
   scoreCalculation: number;
   chosenQuestionIndex: number;
+  arrayWithChosenQuestionIndexes: number[] = []
 
   constructor(public questionsService: QuestionsService, public summaryService: SummaryService) {}
 
@@ -81,6 +82,7 @@ export class QuizComponent implements OnInit {
       if (this.chosenQuestionIndex === this.correctAnswer) {
         this.score++;
       }
+      this.arrayWithChosenQuestionIndexes.push(this.chosenQuestionIndex);
       this.currentQuestionIndex++;
 
       if (this.currentQuestionIndex === this.allQuestions.length) {
@@ -113,6 +115,8 @@ export class QuizComponent implements OnInit {
   }
 
   showQuizSummaryReport() {
+    this.allQuestions.forEach((item, index) => {
+      item['userAnswer'] = this.arrayWithChosenQuestionIndexes[index]});
     this.summaryService.addQuestionList(this.allQuestions);
     this.goToQuizSummaryReport = true;
   }

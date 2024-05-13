@@ -6,11 +6,11 @@ import { Question } from '../quiz/question.model';
 export class SummaryService {
   #questionList: Question[] = [];
 
-  getQuestionList() {
-    return [...this.#questionList];
-  }
-
   addQuestionList(allQuestions: Question[]) {
     this.#questionList = allQuestions;
+  }
+
+  getQuestionList() {
+    return [...this.#questionList];
   }
 }
