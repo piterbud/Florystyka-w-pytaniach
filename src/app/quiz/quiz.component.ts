@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { QuestionsService } from './questions.service';
+import { SummaryService } from '../summary/summary.service';
+import { SummaryComponent } from '../summary/summary.component';
 import { FormsModule } from '@angular/forms';
 
 import { Question } from './question.model';
@@ -8,7 +10,7 @@ import { Question } from './question.model';
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SummaryComponent],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css'
 })
@@ -25,6 +27,7 @@ export class QuizComponent implements OnInit {
   showNextQuestionButton: boolean = false;
   goToQuizSummary: boolean = false;
   poorQuizScore: boolean = false;
+  goToQuizSummaryReport: boolean = false;
 
   id: number;
   idSentance: string;
@@ -39,7 +42,7 @@ export class QuizComponent implements OnInit {
   scoreCalculation: number;
   chosenQuestionIndex: number;
 
-  constructor(public questionsService: QuestionsService) {}
+  constructor(public questionsService: QuestionsService, public summaryService: SummaryService) {}
 
   ngOnInit() {
     this.allQuestions = this.questionsService.questions;
@@ -107,5 +110,10 @@ export class QuizComponent implements OnInit {
         this.answerAlert = '';
       }, 1400);
     }
+  }
+
+  showQuizSummaryReport() {
+    this.summaryService.addQuestionList(this.allQuestions);
+    this.goToQuizSummaryReport = true;
   }
 }

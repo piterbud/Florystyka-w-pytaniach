@@ -1,0 +1,11 @@
+<section class="quiz_summary_report">
+  <div class="quiz_question_list" *ngFor="let question of questionList">
+    <p>Pytanie {{ question.id }}</p>
+    <p>{{ question.title }}</p>
+      <ul>
+        <li *ngFor="let answer of question.answers; let i = index">
+          <label [for]="i"><input type="radio" name="answers" [id]="i" [value]="i"> {{ answer }}</label>
+        </li>
+      </ul>
+   </div>
+</section>

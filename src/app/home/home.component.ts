@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { QuizComponent } from '../quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -17,6 +16,7 @@ export class HomeComponent implements OnInit {
   goToThirdQuestions: boolean = false;
   showHomePageBox: boolean = false;
   goToQuizSummary: boolean = false;
+
   numberOfQuestions: number;
   enteredName: string = '';
   userName: string;
