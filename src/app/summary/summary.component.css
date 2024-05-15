@@ -7,7 +7,7 @@
   padding: 0 30px;
   text-align: left;
   font-family: "Roboto", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   border: 1px solid black;
   border-radius: 6px;
 }
@@ -21,6 +21,14 @@
 .quiz_question_list ul {
   list-style-type: none;
   padding-bottom: 8px;
+}
+
+.quiz_questions_list input {
+  margin-right: 5px;
+}
+
+.quiz_question_list label {
+  text-indent: -18px;
 }
 
 .green_text {

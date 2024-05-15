@@ -6,9 +6,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 0%;
   min-height: 80%;
-  padding: 30px;
+  padding: 30px 50px;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 6px;
 }
@@ -18,8 +21,14 @@
   transition: all 1s ease-out;
 }
 
+/* quiz questions */
+.quiz_questions {
+  /* background-color: blue; */
+  flex: 1 1 69%;
+}
+
 .quiz_questions p {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
 .quiz_questions p:nth-of-type(1) {
@@ -29,46 +38,58 @@
 
 .quiz_questions ul {
   list-style-type: none;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
 .quiz_questions input {
   margin-right: 5px;
 }
 
+.quiz_questions label {
+  text-indent: -23px;
+}
+
 .quiz_questions li:last-child {
-  margin-top: 16px;
+  height: 1.8rem;
+  margin-top: 15px;
   font-style: italic;
   color: rgb(255, 62, 62);
 }
 
-.quiz_images {
-  position: absolute;
-  bottom: 80px;
-  right: 60px;
-  height: 50%;
+/* quiz images */
+.quiz_images_off {
+  /* background-color: green; */
+  flex: 0 1 auto;
 }
 
-.quiz_images_move_left {
-  right: 200px;
+.quiz_images_on {
+  flex: 0 1 31%;
 }
 
-.quiz_images img {
-  height: 100%;
+.quiz_images_on figure {
+  width: 100%;
+}
+
+.quiz_images_on img {
+  width: 100%;
   object-fit: cover;
 }
 
+
+/* next question button */
 .next_question_button {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
+  /* background-color: yellow; */
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .next_question_button_start {
   padding: 0 40px;
   font-family: "Poetsen One", sans-serif;
-  font-size: 1.2rem;
-  line-height: 35px;
+  font-size: 1.8rem;
+  line-height: 3.5rem;
   color: #ff66a3;
   border: none;
   border: 2px solid #ff66a3;
@@ -86,17 +107,19 @@
   border-color: #ff89b8;
 }
 
+
+/* quiz summary */
 .quiz_summary {
   margin-top: 60px;
   text-align: center;
   font-family: "Poetsen One", sans-serif;
-  font-size: 25px;
+  font-size: 2.5rem;
   color: rgb(40, 40, 40);
 }
 
 .quiz_summary p:first-child,
 .quiz_summary p:last-of-type {
-  font-size: 35px;
+  font-size: 3.5rem;
   margin-bottom: 25px;
 }
 
@@ -117,8 +140,8 @@
   margin-bottom: 30px;
   padding: 0 40px;
   font-family: "Poetsen One", sans-serif;
-  font-size: 1.2rem;
-  line-height: 35px;
+  font-size: 1.8rem;
+  line-height: 3.5rem;
   color: #80932b;
   border: none;
   border: 2px solid #80932b;

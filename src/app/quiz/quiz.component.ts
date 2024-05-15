@@ -15,7 +15,7 @@ import { Question } from './question.model';
   styleUrl: './quiz.component.css'
 })
 export class QuizComponent implements OnInit {
-  @Input() goToFirstQuestions: boolean;
+  @Input() goToQuestions: boolean;
   @Input() numberOfQuestions: number;
   @Input() userName: string;
   @Output() backgroundChangedSecondTime = new EventEmitter<boolean>();
@@ -68,12 +68,12 @@ export class QuizComponent implements OnInit {
     this.chosenQuestionIndex = parseInt(e.target.value);
   }
 
-  showImage(): boolean {
+  showImages(): boolean {
     return this.image.endsWith("png");
   }
 
-  moveImageLeft(): boolean {
-    return this.image.includes("q2") || this.image.includes("q7");
+  showImage(): boolean {
+    return this.image.endsWith("png");
   }
 
   nextQuestion(id: number): void {
@@ -90,7 +90,7 @@ export class QuizComponent implements OnInit {
         if (this.scoreCalculation <= 0.5) {
           this.poorQuizScore = true;
         }
-        this.goToFirstQuestions = false;
+        this.goToQuestions = false;
         this.goToQuizSummary = true;
         this.quizSummaryStarted.emit(this.goToQuizSummary);
       } else {

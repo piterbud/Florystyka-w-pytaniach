@@ -1,14 +1,10 @@
 <section class="container-fluid">
   <div class="home_page row"
-  [ngClass]="{'background_for_first_questions': goToFirstQuestions}"
-  [ngClass]="{'background_for_second_questions': goToSecondQuestions}"
-  [ngClass]="{'background_for_third_questions': goToThirdQuestions}"
-  [ngClass]="{'home_page_summary_change': goToQuizSummary}">
+  [ngClass]="{'background_image': showHomePage, 'background_for_first_questions': goToFirstQuestions, 'background_for_second_questions': goToSecondQuestions, 'background_for_third_questions': goToThirdQuestions, 'home_page_summary_change': goToQuizSummary}">
       <div class="home_page_box_start col-md-8"
-      [ngClass]="{'home_page_box_end': showHomePageBox}"
-      [ngClass]="{'home_page_box_summary_change': goToQuizSummary}">
+      [ngClass]="{'home_page_box_end': showHomePageBox, 'home_page_box_summary_change': goToQuizSummary}">
 
-        <div class="home_page_form" *ngIf="!goToFirstQuestions">
+        <div class="home_page_form" *ngIf="!goToQuestions">
           <p>Wpisz swoje imię / nick:</p>
           <input class="rounded" type="text" [placeholder]="nameAlert" [(ngModel)]="enteredName">
 
@@ -18,8 +14,9 @@
           <button class="start_quiz_button rounded" id="start_quiz_button_3" (click)="startQuiz(9)">9</button>
         </div>
 
-        <app-quiz [goToFirstQuestions]="goToFirstQuestions" [numberOfQuestions]="numberOfQuestions" [userName]="userName"
-        *ngIf="goToFirstQuestions"
+        <app-quiz
+        [goToQuestions]="goToQuestions" [numberOfQuestions]="numberOfQuestions" [userName]="userName"
+        *ngIf="goToQuestions"
         (backgroundChangedSecondTime)="secondBackgroundChange($event)"
         (backgroundChangedThirdTime)="thirdBackgroundChange($event)"
         (quizSummaryStarted)="homePageBoxSummaryChange($event)"></app-quiz>

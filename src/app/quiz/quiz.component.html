@@ -1,4 +1,4 @@
-<section class="quiz_box_start" [ngClass]="{'quiz_box_end': showQuizBox}" *ngIf="goToFirstQuestions">
+<section class="quiz_box_start" [ngClass]="{'quiz_box_end': showQuizBox}" *ngIf="goToQuestions">
   <div class="quiz_questions">
     <p>{{ idSentance }}</p>
     <p>{{ title }}</p>
@@ -10,8 +10,10 @@
     </ul>
   </div>
 
-  <div class="quiz_images" [ngClass]="{'quiz_images_move_left': moveImageLeft()}">
-    <img [src]="image" alt="quizImage" *ngIf="showImage()">
+  <div class="quiz_images_off" [ngClass]="{'quiz_images_on': showImages()}">
+    <figure>
+      <img [src]="image" alt="quizImage" *ngIf="showImage()">
+    </figure>
   </div>
 
   <div class="next_question_button">

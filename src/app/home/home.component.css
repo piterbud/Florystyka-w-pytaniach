@@ -9,37 +9,44 @@
   min-height: 100vh;
   margin: 0;
   background-color: black;
-  background-image: url(../../assets/home_flowers_desktop.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transition: all 0.4s ease-out;
+  background-image: url(../../assets/black_desktop.jpg);
+}
+
+.background_image {
+  background-image: url(../../assets/home_flowers_desktop.jpg);
+  transition: background-image 0.6s;
 }
 
 .background_for_first_questions {
-  background-color: black;
   background-image: url(../../assets/first_questions_flowers_desktop.jpg);
-  transition: all 0.4s ease-out;
+  transition: background-image 0.6s;
 }
 
 .background_for_second_questions {
-  background-color: black;
   background-image: url(../../assets/second_questions_flowers_desktop.jpg);
-  transition: all 0.4s ease-out;
+  transition: background-image 0.6s;
 }
 
 .background_for_third_questions {
-  background-color: black;
   background-image: url(../../assets/third_questions_flowers_desktop.jpg);
-  transition: all 0.4s ease-out;
+  transition: background-image 0.6s;
 }
 
 .home_page_summary_change {
   background-attachment: fixed;
+  background-image: url(../../assets/home_flowers_desktop.jpg);
+  transition: background-image 0.8s ease-out;
 }
 
 @media (max-width: 576px) {
   .home_page {
+    background-image: url(../../assets/black_mobile.jpg);
+  }
+
+  .background_image {
     background-image: url(../../assets/home_flowers_mobile.jpg);
   }
 
@@ -54,12 +61,15 @@
   .background_for_third_questions {
     background-image: url(../../assets/third_questions_flowers_mobile.jpg);
   }
+  .home_page_summary_change {
+    background-image: url(../../assets/home_flowers_mobile.jpg);
+  }
 }
 
 .home_page_box_start {
   position: relative;
-  margin-top: 144px;
-  margin-bottom: 48px;
+  margin-top: 110px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,7 +100,7 @@
 .home_page_form p {
   margin: 16px auto;
   text-align: center;
-  font-size: 25px;
+  font-size: 2.5rem;
   color: #80932b;
 }
 
@@ -102,9 +112,9 @@
   display: block;
   margin: 0 auto 26px auto;
   width: 70%;
-  line-height: 35px;
+  line-height: 3.5rem;
   text-align: center;
-  font-size: 25px;
+  font-size: 2.5rem;
   color: rgb(213, 213, 227);
   background-color: transparent;
   border: 2px solid #80932b;
@@ -113,7 +123,7 @@
 .home_page_form input::placeholder {
   font-family: "Roboto", sans-serif;
   font-style: italic;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: rgb(255, 62, 62);
 }
 
@@ -132,22 +142,86 @@
 .start_quiz_button {
   display: block;
   width: 70%;
-  line-height: 35px;
+  line-height: 3.5rem;
   margin: 16px auto;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: bold;
   color: black;
   border: 2px solid #CCB4D4;
   background-color: rgba(250, 250, 250, .6);
   background-blend-mode: screen;
-
 }
 
 .start_quiz_button:hover {
   color: rgb(213, 213, 227);
   border-color: rgb(213, 213, 227);
   background-blend-mode: normal;
+}
+
+@media (max-width: 992px) {
+  .home_page {
+    background-attachment: fixed;
+  }
+
+  .home_page_form input {
+    width: 80%;
+  }
+
+  .start_quiz_button {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home_page_box_start {
+    margin-top: 100px;
+    background-color: rgba(20, 20, 20, 0.6);
+  }
+
+  .home_page_box_summary_change {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@media (max-width: 576px) {
+  .home_page_box_start {
+    margin-top: 160px;
+  }
+
+  .home_page_form p {
+    font-size: 2.3rem;
+  }
+
+  .home_page_form input {
+    line-height: 3.3rem;
+    font-size: 2.3rem;
+  }
+
+  .start_quiz_button {
+    line-height: 3.3rem;
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .home_page_box_start {
+      margin-top: 172.5px;
+  }
+
+  .home_page_form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 385px) {
+  .home_page_form input {
+    width: 90%;
+  }
+
+  .start_quiz_button {
+    width: 90%;
+  }
 }

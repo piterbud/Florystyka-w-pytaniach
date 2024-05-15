@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   goToFirstQuestions: boolean = false;
   goToSecondQuestions: boolean = false;
   goToThirdQuestions: boolean = false;
+  goToQuestions: boolean = false;
+  showHomePage: boolean = false;
   showHomePageBox: boolean = false;
   goToQuizSummary: boolean = false;
 
@@ -23,14 +25,18 @@ export class HomeComponent implements OnInit {
   nameAlert: string = '';
 
   ngOnInit() {
-    setTimeout(() => { this.showHomePageBox = true }, 400);
+    setTimeout(() => { this.showHomePage = true }, 25);
+    setTimeout(() => { this.showHomePageBox = true }, 900);
   }
 
   startQuiz(numberOfQuestions: number): void {
     this.userName = this.enteredName;
     if (this.userName.length > 0) {
-      this.goToFirstQuestions = true;
+      this.goToQuestions = true;
       this.numberOfQuestions = numberOfQuestions;
+      setTimeout(()=> {
+        this.goToFirstQuestions = true;
+      }, 50);
     } else {
       this.nameAlert = 'uzupełnij to pole :)';
       setTimeout(() => {
@@ -40,11 +46,16 @@ export class HomeComponent implements OnInit {
   }
 
   secondBackgroundChange(goToSecondQuestions: boolean): void {
-    this.goToSecondQuestions = goToSecondQuestions;
+    setTimeout(()=> {
+      this.goToSecondQuestions = goToSecondQuestions;
+    }, 50);
   }
 
   thirdBackgroundChange(goToThirdQuestions: boolean): void {
-    this.goToThirdQuestions = goToThirdQuestions;
+    setTimeout(()=> {
+      this.goToThirdQuestions = goToThirdQuestions;
+    }, 50);
+
   }
 
   homePageBoxSummaryChange(goToQuizSummary: boolean): void {
