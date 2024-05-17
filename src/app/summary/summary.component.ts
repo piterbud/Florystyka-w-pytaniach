@@ -15,7 +15,7 @@ import { Question } from '../quiz/question.model';
 export class SummaryComponent implements OnInit {
   questionList: Question[] = [];
 
-  constructor (public summaryService: SummaryService) {}
+  constructor (private summaryService: SummaryService) {}
 
   ngOnInit(): void {
     this.questionList = this.summaryService.getQuestionList();

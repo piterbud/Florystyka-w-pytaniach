@@ -76,6 +76,54 @@ export class QuestionsService {
       id: 9,
       questionName: "question9"
     },
+    {
+      title: "Do wykonania przedstawionego na rysunku bukietu ślubnego typu kamelia, florysta powinien wybrać...",
+      answers: ["kwiaty storczyka.", "płatki bławatka.", "pędy kamelii.", "płatki róży."],
+      correctAnswer: 3,
+      image: "q10.png",
+      id: 10,
+      questionName: "question10"
+    },
+    {
+      title: "Jakie wymiary na rzucie z góry wykonanym w skali 1:10 ma stoisko targowe, którego długość rzeczywista wynosi 4 m, a szerokość 2 m?",
+      answers: ["2 cm x 1 cm", "4 cm x 2 cm", "20 cm x 10 cm", "40 cm x 20 cm"],
+      correctAnswer: 3,
+      image: "",
+      id: 11,
+      questionName: "question11"
+    },
+    {
+      title: "Który zestaw środków technicznych nadaje się do wykonania wieńca rzymskiego ze stroiszu?",
+      answers: ["Wianek ze słomy i drut na kołku.", "Wianek z wikliny i haftki rzymskie.", "Ring ze styropianu i plastelina florystyczna.", "Ring z gąbki do żywych roślin i drut wyrobowy."],
+      correctAnswer: 0,
+      image: "",
+      id: 12,
+      questionName: "question12"
+    },
+    {
+      title: "Na rysunku przedstawiono wieniec, którym w starożytności nagradzano zwycięzców igrzysk. Do jego wykonania zastosowano...",
+      answers: ["rozmaryn.", "oliwkę.", "mirt.", "laur."],
+      correctAnswer: 3,
+      image: "q13.png",
+      id: 13,
+      questionName: "question13"
+    },
+    {
+      title: "Który zestaw roślin najlepiej wybrać do wykonania dekoracji florystycznej w okresie Bożego Narodzenia?",
+      answers: ["Róża, lewkonia, mak.", "Świerk, wilczomlecz, jemioła.", "Chryzantema, nefrolepis, świerk.", "Pierwiosnek, przebiśnieg, jemioła."],
+      correctAnswer: 1,
+      image: "",
+      id: 14,
+      questionName: "question14"
+    },
+    {
+      title: "	Do wykonania bukietu w formie odwróconej kropli nie nadaje się...",
+      answers: ["Rhipsalis.", "Soleirolia.", "Ceropegia.", "Asparagus."],
+      correctAnswer: 1,
+      image: "",
+      id: 15,
+      questionName: "question15"
+    },
   ];
 
   get questions() {

@@ -43,16 +43,26 @@ export class QuizComponent implements OnInit {
   chosenQuestionIndex: number;
   arrayWithChosenQuestionIndexes: number[] = []
 
-  constructor(public questionsService: QuestionsService, public summaryService: SummaryService) {}
+  constructor(private questionsService: QuestionsService, private summaryService: SummaryService) {}
 
   ngOnInit() {
+    let timeToShowQuizBox: number; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    let timeToShowQuestions: number;
+    if (window.innerWidth < 576) {
+      timeToShowQuizBox = 0;
+      timeToShowQuestions = 0;
+    } else {
+      timeToShowQuizBox = 200;
+      timeToShowQuestions = 1200;
+    }
+
     this.allQuestions = this.questionsService.questions;
     this.allQuestions.length = this.numberOfQuestions;
-    setTimeout(() => { this.showQuizBox = true }, 200);
+    setTimeout(() => { this.showQuizBox = true }, timeToShowQuizBox);
     setTimeout(() => {
       this.showQuestions(this.allQuestions);
       this.showNextQuestionButton = true;
-    }, 1200);
+    }, timeToShowQuestions);
   }
 
   showQuestions(questions: Question[]): void {
@@ -100,9 +110,9 @@ export class QuizComponent implements OnInit {
         // background changes
         const goToSecondQuestions = true;
         const goToThirdQuestions = true;
-        if (id === 3) {
+        if (id === 5) {
           this.backgroundChangedSecondTime.emit(goToSecondQuestions);
-        } else if (id === 6) {
+        } else if (id === 10) {
           this.backgroundChangedThirdTime.emit(goToThirdQuestions);
         }
       }

@@ -1,21 +1,22 @@
+<app-header></app-header>
+
 <section class="container-fluid">
   <div class="home_page row"
   [ngClass]="{'background_image': showHomePage, 'background_for_first_questions': goToFirstQuestions, 'background_for_second_questions': goToSecondQuestions, 'background_for_third_questions': goToThirdQuestions, 'home_page_summary_change': goToQuizSummary}">
-      <div class="home_page_box_start col-md-8"
-      [ngClass]="{'home_page_box_end': showHomePageBox, 'home_page_box_summary_change': goToQuizSummary}">
+      <div class="home_page_box_start col-md-10 col-lg-8"
+      [ngClass]="{'home_page_box_end': showHomePageBox, 'home_page_box_quiz_change': goToQuestionsMedium, 'home_page_box_summary_change': goToQuizSummary}">
 
         <div class="home_page_form" *ngIf="!goToQuestions">
           <p>Wpisz swoje imię / nick:</p>
           <input class="rounded" type="text" [placeholder]="nameAlert" [(ngModel)]="enteredName">
 
           <p>Wybierz ilość pytań:</p>
-          <button class="start_quiz_button rounded" id="start_quiz_button_1" (click)="startQuiz(3)">3</button>
-          <button class="start_quiz_button rounded" id="start_quiz_button_2" (click)="startQuiz(6)">6</button>
-          <button class="start_quiz_button rounded" id="start_quiz_button_3" (click)="startQuiz(9)">9</button>
+          <button class="start_quiz_button rounded" id="start_quiz_button_1" (click)="startQuiz(5)">5</button>
+          <button class="start_quiz_button rounded" id="start_quiz_button_2" (click)="startQuiz(10)">10</button>
+          <button class="start_quiz_button rounded" id="start_quiz_button_3" (click)="startQuiz(15)">15</button>
         </div>
 
-        <app-quiz
-        [goToQuestions]="goToQuestions" [numberOfQuestions]="numberOfQuestions" [userName]="userName"
+        <app-quiz [goToQuestions]="goToQuestions" [numberOfQuestions]="numberOfQuestions" [userName]="userName"
         *ngIf="goToQuestions"
         (backgroundChangedSecondTime)="secondBackgroundChange($event)"
         (backgroundChangedThirdTime)="thirdBackgroundChange($event)"

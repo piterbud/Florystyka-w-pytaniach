@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 import { QuizComponent } from '../quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, QuizComponent, FormsModule],
+  imports: [CommonModule, HeaderComponent, QuizComponent, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   goToSecondQuestions: boolean = false;
   goToThirdQuestions: boolean = false;
   goToQuestions: boolean = false;
+  goToQuestionsMedium: boolean = false;
   showHomePage: boolean = false;
   showHomePageBox: boolean = false;
   goToQuizSummary: boolean = false;
@@ -37,6 +39,9 @@ export class HomeComponent implements OnInit {
       setTimeout(()=> {
         this.goToFirstQuestions = true;
       }, 50);
+      if (window.innerWidth < 576) {   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.goToQuestionsMedium = true;
+      }
     } else {
       this.nameAlert = 'uzupełnij to pole :)';
       setTimeout(() => {
@@ -55,7 +60,6 @@ export class HomeComponent implements OnInit {
     setTimeout(()=> {
       this.goToThirdQuestions = goToThirdQuestions;
     }, 50);
-
   }
 
   homePageBoxSummaryChange(goToQuizSummary: boolean): void {
