@@ -14,6 +14,7 @@ import { Question } from '../quiz/question.model';
 })
 export class SummaryComponent implements OnInit {
   questionList: Question[] = [];
+  imagePath: string = "../../assets/quiz_images/";
 
   constructor (private summaryService: SummaryService) {}
 

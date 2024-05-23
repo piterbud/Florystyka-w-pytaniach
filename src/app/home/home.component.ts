@@ -12,19 +12,21 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  showHomePage: boolean = false;
+  showHomePageBox: boolean = false;
+  goToQuestions: boolean = false;
   goToFirstQuestions: boolean = false;
   goToSecondQuestions: boolean = false;
   goToThirdQuestions: boolean = false;
-  goToQuestions: boolean = false;
-  goToQuestionsMedium: boolean = false;
-  showHomePage: boolean = false;
-  showHomePageBox: boolean = false;
   goToQuizSummary: boolean = false;
+  goToQuizSummaryReport: boolean = false;
+  turnOnRandomQuestions: boolean = false;
 
   numberOfQuestions: number;
   enteredName: string = '';
   userName: string;
   nameAlert: string = '';
+  onOffMessage: string = 'wyłączona';
 
   ngOnInit() {
     setTimeout(() => { this.showHomePage = true }, 25);
@@ -38,10 +40,7 @@ export class HomeComponent implements OnInit {
       this.numberOfQuestions = numberOfQuestions;
       setTimeout(()=> {
         this.goToFirstQuestions = true;
-      }, 50);
-      if (window.innerWidth < 576) {   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        this.goToQuestionsMedium = true;
-      }
+      }, 1250);
     } else {
       this.nameAlert = 'uzupełnij to pole :)';
       setTimeout(() => {
@@ -50,19 +49,32 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  randomQuestions() {
+    this.turnOnRandomQuestions = !this.turnOnRandomQuestions;
+    this.turnOnRandomQuestions ? this.onOffMessage = "włączona" : this.onOffMessage = "wyłączona";
+  }
+
   secondBackgroundChange(goToSecondQuestions: boolean): void {
     setTimeout(()=> {
       this.goToSecondQuestions = goToSecondQuestions;
-    }, 50);
+    }, 300);
   }
 
   thirdBackgroundChange(goToThirdQuestions: boolean): void {
     setTimeout(()=> {
       this.goToThirdQuestions = goToThirdQuestions;
-    }, 50);
+    }, 300);
   }
 
   homePageBoxSummaryChange(goToQuizSummary: boolean): void {
     this.goToQuizSummary = goToQuizSummary;
+  }
+
+  homePageBoxSummaryReportChange(goToQuizSummaryReport: boolean): void {
+    this.goToQuizSummaryReport = goToQuizSummaryReport;
+  }
+
+  videoEducation() {
+
   }
 }

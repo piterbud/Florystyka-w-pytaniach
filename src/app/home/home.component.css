@@ -2,6 +2,8 @@
   padding: 0;
 }
 
+
+/* home page */
 .home_page {
   display: flex;
   justify-content: center;
@@ -15,7 +17,14 @@
   background-image: url(../../assets/black_desktop.jpg);
 }
 
+@media (orientation: landscape) and (max-width: 1080px) {
+  .home_page {
+    background-attachment: fixed;
+  }
+}
+
 .background_image {
+  background-attachment: fixed;
   background-image: url(../../assets/home_flowers_desktop.jpg);
   transition: background-image 0.6s;
 }
@@ -66,6 +75,8 @@
   }
 }
 
+
+/* home page box */
 .home_page_box_start {
   position: relative;
   margin-top: 110px;
@@ -73,7 +84,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 500px;
   padding: 25px;
   background-color: rgba(20, 20, 20, 0.65);
   border-radius: 6px;
@@ -85,19 +96,34 @@
   transition: all 0.8s ease-out;
 }
 
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-.home_page_box_quiz_change {
-  min-height: 75vh;
-  align-items: flex-start;
-  opacity: 1;
+@media (orientation: portrait) and (max-width: 576px) {
+  .home_page_box_quiz_change {
+    position: absolute;
+    margin-bottom: 0;
+    top: 0;
+    bottom: 20px;
+    display: block;
+    padding: 20px;
+    background-color: rgba(20, 20, 20, 0.35);
+    transition: 0s;
+  }
+
+  .home_page_box_summary_report_change {
+    position: relative;
+    margin-bottom: 20px;
+    top: auto;
+    bottom: auto;
+    display: flex;
+    padding: 20px;
+  }
 }
 
 .home_page_box_summary_change {
   align-items: flex-start;
-  opacity: 1;
   background-color: rgba(255, 255, 255, 0.8);
   transition: all 0.8s ease-out;
 }
+
 
 /* home page form */
 .home_page_form {
@@ -106,10 +132,14 @@
 }
 
 .home_page_form p {
-  margin: 16px auto;
+  margin: 10px auto;
   text-align: center;
   font-size: 2.5rem;
   color: #80932b;
+}
+
+.home_page_form p:nth-of-type(1) {
+  margin-top: 4px;
 }
 
 .home_page_form p:nth-of-type(2) {
@@ -119,7 +149,7 @@
 .home_page_form input {
   display: block;
   margin: 0 auto 26px auto;
-  width: 70%;
+  width: 80%;
   line-height: 3.5rem;
   text-align: center;
   font-size: 2.5rem;
@@ -149,9 +179,9 @@
 
 .start_quiz_button {
   display: block;
-  width: 70%;
+  width: 80%;
   line-height: 3.5rem;
-  margin: 16px auto;
+  margin: 14px auto;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -169,11 +199,63 @@
   background-blend-mode: normal;
 }
 
-@media (max-width: 992px) {
-  .home_page {
-    background-attachment: fixed;
-  }
+.random_questions_button {
+  display: block;
+  width: 80%;
+  height: 30px;
+  margin: 10px auto 0 auto;
+  font-size: 1.5rem;
+  color: #CCB4D4;
+  border: none;
+  background-color: transparent;
+}
 
+.random_questions_button:hover {
+  box-shadow: 0 0 0 0.5px rgb(228, 228, 236);
+}
+
+.random_questions_button div {
+  width: 281px;
+  margin: 0 auto;
+}
+
+.random_questions_button div>span {
+  display: block;
+  text-align: left;
+}
+
+.random_question_button_message {
+  color: #ff66a3;
+  margin-left: 10px;
+}
+
+.random_questions_button_on {
+  color: #5FD35F !important;
+}
+
+.video_education_button {
+  display: block;
+  width: 80%;
+  line-height: 3.5rem;
+  margin: 24px auto 16px auto;
+  font-size: 2.5rem;
+  color: #B5B76B;
+  border: 2px solid #B5B76B;
+  background-color: transparent;
+}
+
+.video_education_button:hover {
+  color: #9ea05e;
+  border-color: #9ea05e;
+}
+
+.material-symbols-outlined {
+  position: relative;
+  top: 5px;
+}
+
+
+@media (max-width: 992px) {
   .home_page_form input {
     width: 80%;
   }
@@ -199,10 +281,6 @@
 }
 
 @media (max-width: 576px) {
-  .home_page_box_start {
-    margin-top: 110px;
-  }
-
   .home_page_form p {
     font-size: 2.3rem;
   }
@@ -216,11 +294,23 @@
     line-height: 3.3rem;
     font-size: 2.8rem;
   }
+
+  .random_questions_button {
+    font-size: 1.3rem;
+    box-shadow: 0 0 0 0.5px rgb(228, 228, 236);
+  }
+  .random_questions_button div {
+    width: 230px;
+  }
+
+  .video_education_button {
+    font-size: 2.3rem;
+  }
 }
 
 @media (max-width: 470px) {
   .home_page_box_start {
-      margin-top: 145px;
+      margin-top: 135px;
   }
 
   .home_page_form {
@@ -235,5 +325,120 @@
 
   .start_quiz_button {
     width: 90%;
+  }
+
+  .random_questions_button {
+    width: 90%;
+  }
+
+  .video_education_button {
+    width: 90%;
+  }
+}
+
+@media (max-width: 360px) {
+  .home_page_box_start {
+    margin-top: 127.5px;
+  }
+}
+
+
+@media (orientation: landscape) and (max-height: 650px) {
+    .home_page_form p {
+    margin: 8px auto;
+    text-align: center;
+    font-size: 2.3rem;
+    color: #80932b;
+  }
+
+  .home_page_form p:nth-of-type(1) {
+    margin-top: 4px;
+  }
+
+  .home_page_form input {
+    margin: 0 auto 20px auto;
+    line-height: 3.3rem;
+    font-size: 2.3rem;
+  }
+
+  .start_quiz_button {
+    line-height: 3.3rem;
+    margin: 12px auto;
+    font-size: 2.8rem;
+  }
+
+  .random_questions_button {
+    height: 28px;
+    margin: 9px auto 0 auto;
+    font-size: 1.4rem;
+  }
+
+  .video_education_button {
+    line-height: 3.3rem;
+    margin: 20px auto 16px auto;
+    font-size: 2.3rem;
+  }
+
+  .home_page_box_start {
+    min-height: 450px;
+    padding: 20px;
+  }
+}
+
+
+/* home page motto */
+.home_page_motto {
+  margin: 20px 150px 0 0;
+  padding-bottom: 20px;
+}
+
+.home_page_motto>p {
+  text-align: right;
+  font-family: "Kalam", cursive;
+  font-size: 1.8rem;
+  color: #b286c0;
+  margin-bottom: 0px;
+}
+
+.home_page_motto>p:last-child {
+  margin-right: 30px;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 1600px) {
+  .home_page_motto {
+    margin: 20px 300px 0 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .home_page_motto {
+    margin: 20px 80px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .home_page_motto>p span {
+    display: block;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 650px) and (min-width: 1080px) {
+  .home_page_motto {
+    position: fixed;
+    top: 38.5px;
+    right: 40px;
+    z-index: 2;
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  .home_page_motto>p {
+    color: #CCB4D4;
+    font-size: 1.6rem;
+  }
+
+  .home_page_motto>p:last-child {
+    font-size: 1.2rem;
   }
 }

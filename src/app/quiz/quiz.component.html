@@ -25,8 +25,9 @@
 
 <section class="quiz_summary" *ngIf="goToQuizSummary">
   <p>{{ userName }},</p>
-  <p>Quiz florystyczny został ukończony przez Ciebie z wynikiem:</p>
+  <p>Quiz florystyczny ukończyłaś/eś z wynikiem:</p>
   <p [ngClass]="{'poor_quiz_score': poorQuizScore}">{{ score }}/{{ numberOfQuestions }}</p>
+  <div><img src="../../assets/floral-decoration.png" alt="logoImage"></div>
   <button type="button" class="summary_report_button" (click)="showQuizSummaryReport()">Zobacz odpowiedzi</button>
 
   <app-summary *ngIf="goToQuizSummaryReport"></app-summary>

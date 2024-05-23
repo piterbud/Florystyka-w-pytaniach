@@ -18,9 +18,11 @@ export class QuizComponent implements OnInit {
   @Input() goToQuestions: boolean;
   @Input() numberOfQuestions: number;
   @Input() userName: string;
+  @Input() turnOnRandomQuestions: boolean;
   @Output() backgroundChangedSecondTime = new EventEmitter<boolean>();
   @Output() backgroundChangedThirdTime = new EventEmitter<boolean>();
   @Output() quizSummaryStarted = new EventEmitter<boolean>();
+  @Output() quizSummaryReportStarted = new EventEmitter<boolean>();
 
   allQuestions: Question[] = [];
   showQuizBox: boolean = false;
@@ -46,7 +48,7 @@ export class QuizComponent implements OnInit {
   constructor(private questionsService: QuestionsService, private summaryService: SummaryService) {}
 
   ngOnInit() {
-    let timeToShowQuizBox: number; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    let timeToShowQuizBox: number;
     let timeToShowQuestions: number;
     if (window.innerWidth < 576) {
       timeToShowQuizBox = 0;
@@ -57,7 +59,11 @@ export class QuizComponent implements OnInit {
     }
 
     this.allQuestions = this.questionsService.questions;
+    if (this.turnOnRandomQuestions) {
+      this.allQuestions = this.allQuestions.sort(() => 0.5 - Math.random());
+    }
     this.allQuestions.length = this.numberOfQuestions;
+
     setTimeout(() => { this.showQuizBox = true }, timeToShowQuizBox);
     setTimeout(() => {
       this.showQuestions(this.allQuestions);
@@ -110,9 +116,9 @@ export class QuizComponent implements OnInit {
         // background changes
         const goToSecondQuestions = true;
         const goToThirdQuestions = true;
-        if (id === 5) {
+        if (this.currentQuestionIndex === 5) {
           this.backgroundChangedSecondTime.emit(goToSecondQuestions);
-        } else if (id === 10) {
+        } else if (this.currentQuestionIndex === 10) {
           this.backgroundChangedThirdTime.emit(goToThirdQuestions);
         }
       }
@@ -129,5 +135,6 @@ export class QuizComponent implements OnInit {
       item['userAnswer'] = this.arrayWithChosenQuestionIndexes[index]});
     this.summaryService.addQuestionList(this.allQuestions);
     this.goToQuizSummaryReport = true;
+    this.quizSummaryReportStarted.emit(this.goToQuizSummaryReport);
   }
 }

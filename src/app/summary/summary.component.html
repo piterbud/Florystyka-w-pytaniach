@@ -7,5 +7,8 @@
           <label [for]="i" [ngClass]="{'green_text': i === question.correctAnswer, 'red_text': i !== question.correctAnswer && i === question.userAnswer}"><input type="radio" [name]="question.questionName" [id]="i" [value]="i" [checked]="i === question.userAnswer"> {{ answer }}</label>
         </li>
       </ul>
+      <figure>
+        <img [src]="(imagePath + question.image)" [alt]="question.image">
+      </figure>
    </div>
 </section>
