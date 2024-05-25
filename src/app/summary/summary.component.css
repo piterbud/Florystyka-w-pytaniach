@@ -1,5 +1,5 @@
 .quiz_summary_report {
-  padding: 20px 30px;
+  padding: 20px 30px 0px 30px;
 }
 
 .quiz_question_list {
@@ -55,18 +55,44 @@
 
 @media (max-width: 1300px) {
   .quiz_summary_report {
-    padding: 25px;
+    padding: 20px 25px 0px 25px;
   }
 }
 
 @media (orientation: portrait) and (max-width: 576px) {
   .quiz_summary_report {
-    padding: 20px 3px;
+    padding: 20px 3px 0px 3px;
   }
 
   .quiz_question_list {
     margin: 10px 0;
     padding: 0 25px;
     font-size: 1.6rem;
+  }
+}
+
+
+.back_to_home_page {
+  display: block;
+  margin: 10px 0 20px 0;
+  font-family: "Poetsen One", sans-serif;
+  font-size: 1.5rem;
+  color: #ff66a3;
+  text-decoration: none;
+}
+
+.back_to_home_page:hover {
+  color: #ff89b8;
+}
+
+@media (max-width: 576px) {
+  .back_to_home_page {
+    margin: 10px 0 40px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .back_to_home_page {
+    font-size: 1.3rem;
   }
 }

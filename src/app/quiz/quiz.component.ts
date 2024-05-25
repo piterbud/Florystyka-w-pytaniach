@@ -47,6 +47,7 @@ export class QuizComponent implements OnInit {
 
   constructor(private questionsService: QuestionsService, private summaryService: SummaryService) {}
 
+  // landscape animations and random questions method
   ngOnInit() {
     let timeToShowQuizBox: number;
     let timeToShowQuestions: number;
@@ -82,10 +83,6 @@ export class QuizComponent implements OnInit {
 
   onChange(e: any): void {
     this.chosenQuestionIndex = parseInt(e.target.value);
-  }
-
-  showImages(): boolean {
-    return this.image.endsWith("png");
   }
 
   showImage(): boolean {
