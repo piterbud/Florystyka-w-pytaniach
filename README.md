@@ -16,12 +16,10 @@ All inscriptions on the website are in Polish.
 #### Other features:
 * Click on the header logo to return to the home page at any time.
 * The application is **responsive** and can be used on desktop computers, tablets and smartphones.
-* I took all the background photos myself (photography is my second passion after front-end).
+* I took all the background photos myself.
 
 ## Running the page
 To run this project:
-* click this [link](https://piterbud.github.io/FlorystykaWPytaniach/) or 
-* open the index.html file stored in the `dist/` directory on your local server (for example use Live Server extension in VSC) or
 * run `ng serve` for a dev server and navigate to `http://localhost:4200/`
 
 ## Technologies
