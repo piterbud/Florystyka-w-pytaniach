@@ -74,25 +74,18 @@
 
 .back_to_home_page {
   display: block;
-  margin: 10px 0 20px 0;
+  width: 245.262px;
+  line-height: 3.5rem;
+  margin: 15px auto 40px auto;
   font-family: "Poetsen One", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #ff66a3;
   text-decoration: none;
+  border: 1px solid #ff66a3;
+  border-radius: 6px;
 }
 
 .back_to_home_page:hover {
   color: #ff89b8;
-}
-
-@media (max-width: 576px) {
-  .back_to_home_page {
-    margin: 10px 0 40px 0;
-  }
-}
-
-@media (max-width: 360px) {
-  .back_to_home_page {
-    font-size: 1.3rem;
-  }
+  border-color: #ff89b8;
 }

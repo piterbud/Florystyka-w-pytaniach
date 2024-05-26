@@ -9,7 +9,7 @@
 
 .video_list_header {
   margin-top: 120px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   font-family: "Poetsen One", sans-serif;
   font-size: 3rem;
@@ -35,17 +35,23 @@
   box-shadow: 0 0 0 2px #ff66a3;
 }
 
-.back_to_home_page {
+.home_page_link {
   display: block;
-  margin: 10px 0 20px 0;
-  font-family: "Poetsen One", sans-serif;
-  font-size: 1.5rem;
+  width: 40px;
+  margin: 15px auto 20px auto;
   color: #CCB4D4;
-  text-decoration: none;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #CCB4D4;
 }
 
-.back_to_home_page:hover {
-  color: #b8a2bf;
+.home_page_link_symbol {
+  position: relative;
+  top: 2.5px;
+  left: 6px;
+  font-size: 35px;
+  width: 40px;
+  height: 40px;
 }
 
 @media (max-width: 768px) {
@@ -59,8 +65,8 @@
     font-size: 2.5rem;
   }
 
-  .back_to_home_page {
-    margin: 10px 0 60px 0;
+  .home_page_link {
+    margin: 15px auto 80px auto;
   }
 }
 
@@ -76,8 +82,5 @@
 @media (max-width: 360px) {
   .video_list_header {
     font-size: 2rem;
-  }
-  .back_to_home_page {
-    font-size: 1.3rem;
   }
 }
