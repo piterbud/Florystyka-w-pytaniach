@@ -78,7 +78,7 @@ export class QuizComponent implements OnInit {
     this.title = questions[this.currentQuestionIndex].title;
     this.answers = questions[this.currentQuestionIndex].answers;
     this.correctAnswer = questions[this.currentQuestionIndex].correctAnswer;
-    this.image = `../../assets/quiz_images/${questions[this.currentQuestionIndex].image}`;
+    this.image = `assets/quiz_images/${questions[this.currentQuestionIndex].image}`;
   }
 
   onChange(e: any): void {

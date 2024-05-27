@@ -244,6 +244,11 @@
   background-color: transparent;
 }
 
+.video_education_button span:first-child {
+  position: relative;
+  top: -1.5px;
+}
+
 .video_education_button:hover {
   color: #9ea05e;
   border-color: #9ea05e;
@@ -251,7 +256,8 @@
 
 .material-symbols-outlined {
   position: relative;
-  top: 5px;
+  top: 3px;
+  left: 5px;
 }
 
 
