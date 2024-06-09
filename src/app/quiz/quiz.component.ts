@@ -36,7 +36,7 @@ export class QuizComponent implements OnInit {
   title: string;
   answers: string[];
   correctAnswer: number;
-  image: string = "";
+  image: string | null;
   answerAlert: string = "";
 
   currentQuestionIndex: number = 0;
@@ -78,15 +78,11 @@ export class QuizComponent implements OnInit {
     this.title = questions[this.currentQuestionIndex].title;
     this.answers = questions[this.currentQuestionIndex].answers;
     this.correctAnswer = questions[this.currentQuestionIndex].correctAnswer;
-    this.image = `assets/quiz_images/${questions[this.currentQuestionIndex].image}`;
+    this.image = questions[this.currentQuestionIndex].image ? `assets/quiz_images/${questions[this.currentQuestionIndex].image}` : null;
   }
 
   onChange(e: any): void {
     this.chosenQuestionIndex = parseInt(e.target.value);
-  }
-
-  showImage(): boolean {
-    return this.image.endsWith("png");
   }
 
   nextQuestion(id: number): void {

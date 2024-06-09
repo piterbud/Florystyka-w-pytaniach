@@ -10,9 +10,9 @@
     </ul>
   </div>
 
-  <div class="quiz_images_off" [ngClass]="{'quiz_images_on': showImage()}">
+  <div class="quiz_images" [ngClass]="{'quiz_images_on': image}">
     <figure>
-      <img [src]="image" alt="quizImage" *ngIf="showImage()">
+      <img [src]="image" alt="quizImage" *ngIf="image">
     </figure>
   </div>
 
