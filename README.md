@@ -20,7 +20,8 @@ All inscriptions on the website are in Polish.
 
 ## Running the page
 To run this project:
-* run `ng serve` for a dev server and navigate to `http://localhost:4200/`
+* run `ng serve` for a dev server and navigate to `http://localhost:4200/` or
+* click this [link](https://piterbud.github.io/Florystyka-w-pytaniach/)
 
 ## Technologies
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5. and of course with:
