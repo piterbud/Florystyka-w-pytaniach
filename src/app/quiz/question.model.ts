@@ -1,9 +1,10 @@
 export interface Question {
   title: string;
-  answers: string[];
-  correctAnswer: number;
+  answers: {answer: string, isCorrect: boolean}[];
   image: string;
   id: number;
   questionName: string;
+  answersInNewOrder?: string[];
+  correctAnswer?: number;
   userAnswer?: number;
 }

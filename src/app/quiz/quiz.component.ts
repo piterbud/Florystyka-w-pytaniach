@@ -43,7 +43,10 @@ export class QuizComponent implements OnInit {
   score: number = 0;
   scoreCalculation: number;
   chosenQuestionIndex: number;
-  arrayWithChosenQuestionIndexes: number[] = []
+
+  arrayWithAnswersInNewOrder: string[][] = [];
+  arrayWithCorrectAnswerIndexes: number[] = [];
+  arrayWithChosenQuestionIndexes: number[] = [];
 
   constructor(private questionsService: QuestionsService, private summaryService: SummaryService) {}
 
@@ -76,8 +79,9 @@ export class QuizComponent implements OnInit {
     this.id = questions[this.currentQuestionIndex].id;
     this.idSentance = `Pytanie ${questions[this.currentQuestionIndex].id}`;
     this.title = questions[this.currentQuestionIndex].title;
-    this.answers = questions[this.currentQuestionIndex].answers;
-    this.correctAnswer = questions[this.currentQuestionIndex].correctAnswer;
+    const randomAnswers = questions[this.currentQuestionIndex].answers.sort(() => 0.5 - Math.random());
+    this.answers = randomAnswers.map(item => item.answer);
+    this.correctAnswer = randomAnswers.map(item => item.isCorrect).indexOf(true);
     this.image = questions[this.currentQuestionIndex].image ? `assets/quiz_images/${questions[this.currentQuestionIndex].image}` : null;
   }
 
@@ -91,6 +95,8 @@ export class QuizComponent implements OnInit {
       if (this.chosenQuestionIndex === this.correctAnswer) {
         this.score++;
       }
+      this.arrayWithAnswersInNewOrder.push(this.answers);
+      this.arrayWithCorrectAnswerIndexes.push(this.correctAnswer);
       this.arrayWithChosenQuestionIndexes.push(this.chosenQuestionIndex);
       this.currentQuestionIndex++;
 
@@ -125,6 +131,8 @@ export class QuizComponent implements OnInit {
 
   showQuizSummaryReport() {
     this.allQuestions.forEach((item, index) => {
+      item['answersInNewOrder'] = this.arrayWithAnswersInNewOrder[index];
+      item['correctAnswer'] = this.arrayWithCorrectAnswerIndexes[index];
       item['userAnswer'] = this.arrayWithChosenQuestionIndexes[index]});
     this.summaryService.addQuestionList(this.allQuestions);
     this.goToQuizSummaryReport = true;

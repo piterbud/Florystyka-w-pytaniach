@@ -3,7 +3,7 @@
     <p>Pytanie {{ question.id }}</p>
     <p>{{ question.title }}</p>
       <ul>
-        <li *ngFor="let answer of question.answers; let i = index">
+        <li *ngFor="let answer of question.answersInNewOrder; let i = index">
           <label [for]="i" [ngClass]="{'green_text': i === question.correctAnswer, 'red_text': i !== question.correctAnswer && i === question.userAnswer}"><input type="radio" [name]="question.questionName" [id]="i" [value]="i" [checked]="i === question.userAnswer"> {{ answer }}</label>
         </li>
       </ul>
